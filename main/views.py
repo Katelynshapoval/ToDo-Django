@@ -8,4 +8,4 @@ from .models import ToDoList, Item
 def index(request, id):
     ls = ToDoList.objects.get(id=id)
     item = ls.item_set.get(id=1)
-    return HttpResponse("%s, %s" % (ls.name, str(item.text)))
+    return HttpResponse("%s, %s, %s" % (ls.name, str(item.text), str(item.complete)))
