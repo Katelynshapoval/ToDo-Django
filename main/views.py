@@ -5,7 +5,11 @@ from .models import ToDoList, Item
 # Create your views here.
 
 
-def index(request, id):
+def index(response, id):
+    # my_dic = {"name": ls.name}
     ls = ToDoList.objects.get(id=id)
-    item = ls.item_set.get(id=1)
-    return HttpResponse("%s, %s, %s" % (ls.name, str(item.text), str(item.complete)))
+    return render(response, "main/list.html", {"ls": ls})
+
+
+def home(response):
+    return render(response, "main/home.html", {})
